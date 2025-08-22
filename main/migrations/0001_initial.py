@@ -35,7 +35,7 @@ class Migration(migrations.Migration):
                 ('slug', models.CharField(max_length=100, unique=True)),
                 ('color', models.CharField(max_length=100)),
                 ('price', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('descripation', models.TextField(blank=True)),
+                ('description', models.TextField(blank=True)),
                 ('main_image', models.ImageField(upload_to='products/main/')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now_add=True)),

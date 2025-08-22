@@ -40,7 +40,7 @@ class Product(models.Model):
         related_name='products') #category получает все поля которые есть в классе Category, on_delete это плашка с вопросом о удалении уверены или нет, related name - как будет отображаться в админке
     color = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2) # в отличии от IntegerField decimal позволяет адекватно считать скидки
-    descripation = models.TextField(blank=True) #blank = true значит что данные поля могут быть пустыми в заполнении админки 
+    description = models.TextField(blank=True) #blank = true значит что данные поля могут быть пустыми в заполнении админки 
     main_image = models.ImageField(upload_to='products/main/') # так как в сеттингах указали media, то фотки пойдут сначала в папку медиа, а потом и туда куда указали
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
