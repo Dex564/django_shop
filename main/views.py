@@ -19,7 +19,7 @@ class IndexView(TemplateView):
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         if request.headers.get('HX-Request'): # Если с каталога хотим зайти на home content где лист категорий
-            return TemplateResponse(request, 'main/home_context.html', context)
+            return TemplateResponse(request, 'main/home_content.html', context) # была ошибка, я написал home_context, и прога пыталась вызвать несуществубщий шаблон
         return TemplateResponse(request, self.template_name, context)
     
 
@@ -102,13 +102,13 @@ class ProductDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         product = self.get_object() # человек когда делает запрос на сервер для показа дет инфы о продукте, он даёт этот самый продукт
         context['categories'] = Category.objects.all()
-        context['related_products'] = Product.objects.filter(category=product.categpry).exclude(id = product.id)[:4]
+        context['related_products'] = Product.objects.filter(category=product.category).exclude(id = product.id)[:4]
         context['current_category'] = product.category.slug
         return context
     
     def get(self, request, *args, **kwargs):  #метод для получения шаблона
         self.object = self.get_object()
-        context = self.get_context_data9(**kwargs)
+        context = self.get_context_data(**kwargs)
         if request.headers.get('HX-Request'):
             return TemplateResponse(request, 'main/product_detail.html', context) # чисто шаблон нашего товара
         raise TemplateResponse(request, self.template_name, context)
