@@ -31,7 +31,7 @@ class CatalogView(TemplateView):
         'color': lambda queryset, value: queryset.filter(color__iexact = value), 
         'min_price': lambda queryset, value: queryset.filter(price_gte = value), 
         'max_price': lambda queryset, value: queryset.filter(price_lte = value), 
-        'size': lambda queryset, value: queryset.filter(product_size__size__name = value), 
+        'size': lambda queryset, value: queryset.filter(product_sizes__size__name = value), 
     } # словарь флагов, которые отвечают за сортировку
 
     def get_context_data(self, **kwargs): # по сути мы достаём из бд элементы, с которыми мы будем контактировать
@@ -43,7 +43,7 @@ class CatalogView(TemplateView):
 
         if category_slug: # типа если чел указал слаг, пытаемся достать товар по слагу
             current_category = get_object_or_404(Category, slug=category_slug)
-            products = Product.filter(category=current_category)
+            products = products.filter(category=current_category)
 
         query = self.request.GET.get('q') # q - это что что человек написал типо, я хз
         if query:
@@ -52,7 +52,7 @@ class CatalogView(TemplateView):
             )
 
         filter_params = {}
-        for param, filter_func in self.FILTER_MAPPING.items:
+        for param, filter_func in self.FILTER_MAPPING.items():
             value = self.request.GET.get(param)
             if value:
                 products = filter_func(products, value)
