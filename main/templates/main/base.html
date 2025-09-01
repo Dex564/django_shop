@@ -129,19 +129,19 @@
             
             <nav class="space-y-6">
                 <a href="{% url 'main:index' %}" 
-                   hx-get="{% url 'main:index' %}" 
-                   hx-target="#main-content" 
-                   hx-push-url="true"
-                   class="mobile-nav-link block text-lg font-medium text-gray-900 hover:text-gray-700 py-2 border-b border-gray-200">
-                   HOME
+                    hx-get="{% url 'main:index' %}" 
+                    hx-target="#main-content" 
+                    hx-push-url="true"
+                    class="mobile-nav-link block text-lg font-medium text-gray-900 hover:text-gray-700 py-2 border-b border-gray-200">
+                    HOME
                 </a>
                 {% for category in categories %}
                 <a href="{% url 'main:catalog' category.slug %}" 
-                   hx-get="{% url 'main:catalog' category.slug %}" 
-                   hx-target="#main-content" 
-                   hx-push-url="true"
-                   class="mobile-nav-link block text-lg font-medium text-gray-900 hover:text-gray-700 py-2 border-b border-gray-200 {% if current_category == category.slug %}active{% endif %}">
-                   {{ category.name|upper }}
+                    hx-get="{% url 'main:catalog' category.slug %}" 
+                    hx-target="#main-content" 
+                    hx-push-url="true"
+                    class="mobile-nav-link block text-lg font-medium text-gray-900 hover:text-gray-700 py-2 border-b border-gray-200 {% if current_category == category.slug %}active{% endif %}">
+                    {{ category.name|upper }}
                 </a>
                 {% endfor %}
             </nav>
@@ -171,9 +171,9 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0">
                     <a href="{% url 'main:index' %}" 
-                       hx-get="{% url 'main:index' %}" 
-                       hx-target="#main-content" 
-                       hx-push-url="true">
+                        hx-get="{% url 'main:index' %}" 
+                        hx-target="#main-content" 
+                        hx-push-url="true">
                         <h1 class="text-sm sm:text-lg font-bold tracking-tight text-left">
                             Vergil Shop<br>
                         </h1>
@@ -184,11 +184,11 @@
                 <nav class="hidden md:flex space-x-8">
                     {% for category in categories %}
                     <a href="{% url 'main:catalog' category.slug %}" 
-                       hx-get="{% url 'main:catalog' category.slug %}" 
-                       hx-target="#main-content" 
-                       hx-push-url="true"
-                       class="nav-link text-sm font-medium text-gray-900 hover:text-gray-700 {% if current_category == category.slug %}active{% endif %}">
-                       {{ category.name|upper }}
+                        hx-get="{% url 'main:catalog' category.slug %}" 
+                        hx-target="#main-content" 
+                        hx-push-url="true"
+                        class="nav-link text-sm font-medium text-gray-900 hover:text-gray-700 {% if current_category == category.slug %}active{% endif %}">
+                        {{ category.name|upper }}
                     </a>
                     {% endfor %}
                 </nav>
